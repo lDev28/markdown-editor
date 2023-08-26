@@ -1,0 +1,31 @@
+#root {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	/* text-align: center; */
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.headings {
+	width: 100%;
+	height: 60px;
+	font-family: sans-serif;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	background-image: linear-gradient(
+		90deg,
+		rgb(205, 25, 241),
+		rgb(82, 15, 240)
+	);
+
+	& h2 {
+		width: calc(50% - 10px);
+		padding: 0 0 0 10px;
+		margin: 0;
+	}
+}

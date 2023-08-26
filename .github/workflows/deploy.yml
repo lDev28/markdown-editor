@@ -1,0 +1,62 @@
+on:
+   push:
+      branches:
+         - master
+
+jobs:
+   build:
+      name: Build
+      runs-on: ubuntu-latest
+
+      steps:
+<<<<<<< HEAD
+         - name: Checkout repo
+           uses: actions/checkout@v2
+=======
+         - name: Checkout repository
+           uses: actions/checkout@v3
+>>>>>>> d245e7dd5961f0dd933d11679a11d4e7791a07a4
+
+         - name: Setup Node
+           uses: actions/setup-node@v1
+           with:
+              node-version: 16
+
+         - name: Install dependencies
+           run: npm install
+
+         - name: Build project
+           run: npm run build
+
+         - name: Upload production-ready build files
+<<<<<<< HEAD
+           uses: actions/upload-artifact@v2
+=======
+           uses: actions/upload-artifact@v3
+>>>>>>> d245e7dd5961f0dd933d11679a11d4e7791a07a4
+           with:
+              name: production-files
+              path: ./dist
+
+   deploy:
+      name: Deploy
+      needs: build
+      runs-on: ubuntu-latest
+      if: github.ref == 'refs/heads/master'
+
+      steps:
+         - name: Download artifact
+<<<<<<< HEAD
+           uses: actions/download-artifact@v2
+=======
+           uses: actions/download-artifact@v3
+>>>>>>> d245e7dd5961f0dd933d11679a11d4e7791a07a4
+           with:
+              name: production-files
+              path: ./dist
+
+         - name: Deploy to GitHub Pages
+           uses: peaceiris/actions-gh-pages@v3
+           with:
+              github_token: ${{ secrets.GITHUB_TOKEN }}
+              publish_dir: ./dist
